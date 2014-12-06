@@ -8,7 +8,16 @@ key = {
 
 buffer = "";
 
-addEventListener('keydown', function(event) {
+function preventBackspaceHandler(evt) {
+    evt = evt || window.event;
+    if (evt.keyCode == 8) {
+        return false;
+    }
+}
+
+document.onkeydown = preventBackspaceHandler;
+
+window.addEventListener('keydown', function(event) {
 
   switch (event.keyCode) {
     case 37: // Left
@@ -25,7 +34,7 @@ addEventListener('keydown', function(event) {
   }
 }, false);
 
-addEventListener('keyup', function(event) {
+window.addEventListener('keyup', function(event) {
   switch (event.keyCode) {
     case 37: // Left
       key.left = false;
