@@ -8,18 +8,6 @@ key = {
 
 buffer = "";
 
-
-$(document).keypress(function(e) {
-  if(e.which == 13) {
-    runCommand(buffer);
-    buffer = "";
-  }
-  else if(e.which == 8) {
-    if(buffer.length > 0)
-      buffer = buffer.substring(0, buffer.length - 1);
-  }
-});
-
 window.addEventListener('keydown', function(event) {
 
   switch (event.keyCode) {
@@ -50,6 +38,16 @@ window.addEventListener('keyup', function(event) {
 
     case 39: // Right
       key.right = false;
+      break;
+
+    case 13: // Enter
+      runCommand(buffer);
+      buffer = "";
+      break;
+
+    case 8: // Backspace
+      if(buffer.length > 0)
+        buffer = buffer.substring(0, buffer.length - 1);
       break;
   }
 }, false);

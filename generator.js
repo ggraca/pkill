@@ -1,4 +1,5 @@
 function Generator(){
+  this.cd = 2000;
 
   this.start = function(){
     this.wave(this);
@@ -12,10 +13,11 @@ function Generator(){
       }
       bitches[name] = new Enemy(g.generateSpawn(), name);
     }
-
+    g.cd -= 10;
+    if(g.cd < 0) g.cd = 0;
     setTimeout(function(){
         g.wave(g);
-    }, 2000);
+    }, g.cd);
   }
 
   this.generateSpawn = function(){

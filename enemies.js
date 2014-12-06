@@ -8,7 +8,7 @@ function Enemy(spawn_pos, name) {
   this.name_tex.position.y = -120;
   this.name_tex.anchor = new PIXI.Point(0.5,0.5);
 
-  this.speed = 1;
+  this.speed = 0.7;
 
   this.position = spawn_pos;
 
