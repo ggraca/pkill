@@ -54,4 +54,5 @@ window.addEventListener('keyup', function(event) {
   if((event.keyCode >= 65 && event.keyCode <= 90) || event.keyCode == 32)
     buffer += String.fromCharCode(event.keyCode).toLowerCase();
 
+  return false;
 }, false);
