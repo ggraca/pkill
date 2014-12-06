@@ -50,11 +50,8 @@ window.addEventListener('keyup', function(event) {
         buffer = buffer.substring(0, buffer.length - 1);
       break;
   }
-}, false);
 
-window.addEventListener('keypress', function(event) {
-
-  if(event.charCode != 0)
-    buffer += String.fromCharCode(event.charCode);
+  if((event.keyCode >= 65 && event.keyCode <= 90) || event.keyCode == 32)
+    buffer += String.fromCharCode(event.keyCode).toLowerCase();
 
 }, false);
