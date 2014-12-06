@@ -15,11 +15,11 @@ function Generator(){
 
     setTimeout(function(){
         g.wave(g);
-    }, 1000);
+    }, 2000);
   }
 
   this.generateSpawn = function(){
-    return {x: 50, y: Math.floor(Math.random() * 480)};
+    return {x: 50 + (Math.floor(Math.random() * 2) * 500), y: Math.floor(Math.random() * 480)};
   }
 
   this.generateName = function(){
