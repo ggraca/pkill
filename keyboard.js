@@ -8,7 +8,7 @@ key = {
 
 buffer = "";
 
-window.addEventListener('keydown', function(event) {
+addEventListener('keydown', function(event) {
 
   switch (event.keyCode) {
     case 37: // Left
@@ -22,11 +22,10 @@ window.addEventListener('keydown', function(event) {
     case 39: // Right
       key.right = true;
       break;
-
   }
 }, false);
 
-window.addEventListener('keyup', function(event) {
+addEventListener('keyup', function(event) {
   switch (event.keyCode) {
     case 37: // Left
       key.left = false;
@@ -54,5 +53,4 @@ window.addEventListener('keyup', function(event) {
   if((event.keyCode >= 65 && event.keyCode <= 90) || event.keyCode == 32)
     buffer += String.fromCharCode(event.keyCode).toLowerCase();
 
-  return false;
 }, false);
