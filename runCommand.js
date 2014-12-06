@@ -12,6 +12,12 @@ command = {
       alias[words[0]] = words.slice(1, words.length).join(" ");
     }
   },
+  swipe: function(words){
+    for (var name in bitches) {
+      if(dist(bitches[name].position, player.position) < 55)
+        bitches[name].die();
+    }
+  },
 };
 
 

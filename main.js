@@ -23,12 +23,9 @@ function animate() {
 	requestAnimFrame( animate );
 
 	player.update();
-	//console.log(player.rotation);
 
-	for (var name in bitches) {
+	for (var name in bitches)
 		bitches[name].move()
-	}
-
 
 	renderer.render(stage);
 }

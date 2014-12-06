@@ -14,3 +14,8 @@ function moveForward(entity){
     entity.position.x += entity.speed * Math.sin(rotation);
     entity.position.y += entity.speed * Math.cos(rotation);
 }
+
+
+function dist(a, b){
+  return Math.sqrt(Math.pow((a.x - b.x), 2) + Math.pow((a.y - b.y), 2))
+}
