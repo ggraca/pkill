@@ -1,9 +1,12 @@
 init();
 
 function init(){
-	stage = new PIXI.Stage(0x000000);
-	renderer = PIXI.autoDetectRenderer(640, 480);
+	stage = new PIXI.Stage(0x444444);
+	renderer = PIXI.autoDetectRenderer(innerWidth, innerHeight);
 	document.body.appendChild(renderer.view);
+
+	fog = new PIXI.Graphics();
+	stage.addChild(fog);
 
 	//Player
 	player = new Player();
@@ -25,7 +28,10 @@ function animate() {
 	player.update();
 
 	for (var name in bitches)
-		bitches[name].move()
+		bitches[name].update()
+
+	drawShadows();
+	stage.setChildIndex(fog, stage.children.length - 1);
 
 	renderer.render(stage);
 }

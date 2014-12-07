@@ -25,7 +25,7 @@ window.addEventListener('keydown', function(event) {
       break;
 
     case 38: // Up
-      key.up = true;
+      //key.up = true;
       break;
 
     case 39: // Right

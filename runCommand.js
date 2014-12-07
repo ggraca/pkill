@@ -1,7 +1,16 @@
 alias = {};
 
 command = {
-  a: function(words){
+  walk: function(words){
+    player.speed = 2;
+  },
+  run: function(words){
+    player.speed = 4;
+  },
+  stop: function(words){
+    player.speed = 0;
+  },
+  alias: function(words){
     if(words.length == 0)
       return;
     else if(words.length == 1){
@@ -10,24 +19,28 @@ command = {
     }
     else{
       var str = words.slice(1, words.length).join(" ");
-      if(handleAlias(str).indexOf(words[0]) != -1)
+      if(handleAlias(str).indexOf(words[0]) == -1){
         alias[words[0]] = str;
+        console.log("accepted");
+      }
+
       else
         console.log("denied");
     }
   },
-  s: function(words){
+  swipe: function(words){
     for (var name in bitches) {
       if(dist(bitches[name].position, player.position) < 55)
         bitches[name].die();
     }
   },
-  t: function(words){
+  teleport: function(words){
     if(words.length == 0)
       return
     if(words[0] in bitches){
       player.position.x = bitches[words[0]].position.x;
       player.position.y = bitches[words[0]].position.y;
+      bitches[words[0]].die();
     }
   },
 };
@@ -48,14 +61,7 @@ function handleAlias(str){
 }
 
 function runCommand(str){
-  console.log(str);
   words = handleAlias(str);
-
-  for(var i = 0; i < words.length; i++){
-    console.log(words[i]);
-  }
-
-  console.log(words[0]);
 
   if(words[0] in command)
     command[words[0]](words.slice(1, words.length));

@@ -3,10 +3,9 @@ function Entity(texture) {
   stage.addChild(this);
 
   this.tex = new PIXI.Sprite(PIXI.Texture.fromImage(texture))
+  this.tex.scale = new PIXI.Point(0.2, 0.2);
   this.tex.anchor = new PIXI.Point(0.5,0.5);
   this.addChild(this.tex);
-
-  this.scale = new PIXI.Point(0.4,0.4);
 }
 
 Entity.prototype = Object.create(PIXI.DisplayObjectContainer.prototype);
