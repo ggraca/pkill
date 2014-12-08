@@ -8,7 +8,8 @@ function Player() {
   this.terminal.anchor = new PIXI.Point(0.5,0.5);
 
   this.speed = 0;
-  this.hp = 0.4;
+  this.hp = 0.5;
+  this.dead = false;
 
   this.update = function(){
 
@@ -35,6 +36,17 @@ function Player() {
       this.position.x = pos.x;
       this.position.y = pos.y;
 
+    }
+  }
+
+  this.hit = function(){
+    this.hp -= 0.05;
+    if(this.hp <= 0){
+      if(!this.dead){
+        if(confirm("Restart?"))
+          window.location.reload()
+      }
+      this.dead = true;
     }
   }
 }

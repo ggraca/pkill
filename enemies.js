@@ -8,7 +8,7 @@ function Enemy(spawn_pos, name) {
   this.name_tex.position.y = -40;
   this.name_tex.anchor = new PIXI.Point(0.5,0.5);
 
-  this.speed = 0.5;
+  this.speed = 1.5;
   this.position = spawn_pos;
   this.attacking = false;
 
@@ -23,9 +23,7 @@ function Enemy(spawn_pos, name) {
       var e = this;
       setTimeout(function(){
           if(dist(e.position, player.position) < 50)
-            player.hp -= 0.05;
-            if(player.hp <= 0)
-              console.log("gg wp")
+            player.hit();
           e.attacking = false;
       }, 500);
     }
@@ -48,6 +46,7 @@ function Enemy(spawn_pos, name) {
   }
 
   this.die = function(){
+    player.hp += 0.01;
     stage.removeChild(this);
     delete bitches[this.name];
     counter++;

@@ -19,18 +19,13 @@ command = {
     }
     else{
       var str = words.slice(1, words.length).join(" ");
-      if(handleAlias(str).indexOf(words[0]) == -1){
+      if(handleAlias(str).indexOf(words[0]) == -1)
         alias[words[0]] = str;
-        console.log("accepted");
-      }
-
-      else
-        console.log("denied");
     }
   },
   swipe: function(words){
     for (var name in bitches) {
-      if(dist(bitches[name].position, player.position) < 55)
+      if(dist(bitches[name].position, player.position) < 80)
         bitches[name].die();
     }
   },

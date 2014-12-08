@@ -27,12 +27,25 @@ function drawShadows(){
   fog.clear();
   fog.beginFill(0x000000, 1);
 
-  fog.drawShape(new PIXI.Rectangle(0, 0, player.position.x - (percentage * innerWidth)/2, innerHeight))
-  fog.drawShape(new PIXI.Rectangle(0, 0, innerWidth, player.position.y - (percentage * innerHeight)/2))
+  borders = {
+    top: player.position.y - (percentage * innerHeight)/2,
+    down:player.position.y + (percentage * innerHeight)/2,
+    left: player.position.x - (percentage * innerWidth)/2,
+    right: player.position.x + (percentage * innerWidth)/2,
+  };
 
-  var x = player.position.x + (percentage * innerWidth)/2
-  fog.drawShape(new PIXI.Rectangle(x, 0, innerWidth - x, innerHeight))
+  if(player.position.x < (percentage * innerWidth)/2)
+    borders.right = (percentage * innerWidth)
+  if(player.position.x > innerWidth - (percentage * innerWidth)/2)
+    borders.left = innerWidth - (percentage * innerWidth)
+  if(player.position.y < (percentage * innerHeight)/2)
+    borders.down = (percentage * innerHeight)
+  if(player.position.y > innerHeight - (percentage * innerHeight)/2)
+    borders.top = innerHeight - (percentage * innerHeight)
 
-  var y = player.position.y + (percentage * innerHeight)/2
-  fog.drawShape(new PIXI.Rectangle(0, y, innerWidth, innerHeight - y));
+
+  fog.drawShape(new PIXI.Rectangle(0, 0, borders.left, innerHeight));
+  fog.drawShape(new PIXI.Rectangle(0, 0, innerWidth, borders.top));
+  fog.drawShape(new PIXI.Rectangle(borders.right, 0, innerWidth - borders.right, innerHeight));
+  fog.drawShape(new PIXI.Rectangle(0, borders.down, innerWidth, innerHeight - borders.down));
 }
