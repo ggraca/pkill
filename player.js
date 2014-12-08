@@ -43,7 +43,7 @@ function Player() {
     this.hp -= 0.05;
     if(this.hp <= 0){
       if(!this.dead){
-        if(confirm("Restart?"))
+        if(confirm("You killed " + counter + " of them! Restart?"))
           window.location.reload()
       }
       this.dead = true;
